@@ -1,64 +1,70 @@
-'use strict';
+"use strict";
 
 console.log('App.js is running');
 
+var app = {
+    title: "Indecision App",
+    subtitle: "Let me make a decision for you."
+};
+
 // JSX - Javascript XML
 var template = React.createElement(
-    'div',
+    "div",
     null,
     React.createElement(
-        'h1',
+        "h1",
         null,
-        'Indecision App'
+        app.title
     ),
     React.createElement(
-        'p',
+        "p",
         null,
-        'This is some info'
+        app.subtitle
     ),
     React.createElement(
-        'ol',
+        "ol",
         null,
         React.createElement(
-            'li',
+            "li",
             null,
-            'Item one'
+            "Item one"
         ),
         React.createElement(
-            'li',
+            "li",
             null,
-            'Item two'
+            "Item two"
         )
     )
 );
 
-// create a templateTwo var JSX expression
-// div
-//  h1 -> Thomas
-//  p  -> Age: 25
-//  p  -> Location: Florianópolis
-//  Render templateTwo instead of template
+var user = {
+    name: 'Thomas',
+    age: 25,
+    location: 'Florianópolis'
+};
 
 var templateTwo = React.createElement(
-    'div',
+    "div",
     null,
     React.createElement(
-        'h1',
+        "h1",
         null,
-        'Thomas'
+        user.name.toUpperCase() + '!'
     ),
     React.createElement(
-        'p',
+        "p",
         null,
-        'Age: 25'
+        "Age: ",
+        user.age
     ),
     React.createElement(
-        'p',
+        "p",
         null,
-        'Location: Florian\xF3polis'
+        "Location: ",
+        user.location
     )
 );
 
 var appRoot = document.getElementById('app');
 
-ReactDOM.render(templateTwo, appRoot);
+ReactDOM.render(template, appRoot);
