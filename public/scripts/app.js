@@ -2,14 +2,6 @@
 
 console.log('App.js is running');
 
-// if statements
-// ternary operators
-// logical and operator
-
-
-// only render the subtitle(and p tag) if subtitle exist - logical and operator
-// render new p tag - if options.length > 0 "Here are your options" "No options"
-
 var app = {
     title: "Indecision App",
     subtitle: "Let me make a decision for you.",
@@ -54,52 +46,50 @@ var template = React.createElement(
 var count = 0;
 // arrow function
 var addOne = function addOne() {
-    console.log('addOne');
+    count++;
+    renderCounterApp();
 };
 var minusOne = function minusOne() {
-    console.log('minusOne');
+    count--;
+    renderCounterApp();
 };
 var reset = function reset() {
-    console.log('reset');
+    count = 0;
+    renderCounterApp();
 };
-var templateTwo = React.createElement(
-    "div",
-    null,
-    React.createElement(
-        "h1",
-        null,
-        "Count: ",
-        count
-    ),
-    React.createElement(
-        "button",
-        { onClick: addOne },
-        "+1"
-    ),
-    React.createElement(
-        "button",
-        { onClick: minusOne },
-        "-1"
-    ),
-    React.createElement(
-        "button",
-        { onClick: reset },
-        "reset"
-    )
-);
-
-/*
-can be done this way
-<button onClick={() => {
-    console.log('addOne');
-}}>+1</button>
-*/
-
-// Challenge
-// Make button "-1" - setup minusOne function and register - log "minusOne"
-// Make reset button "reset" - setup reset function - log "reset"
-
 
 var appRoot = document.getElementById('app');
 
-ReactDOM.render(templateTwo, appRoot);
+var renderCounterApp = function renderCounterApp() {
+
+    // JSX doesn't have built in data binding
+    var templateTwo = React.createElement(
+        "div",
+        null,
+        React.createElement(
+            "h1",
+            null,
+            "Count: ",
+            count
+        ),
+        React.createElement(
+            "button",
+            { onClick: addOne },
+            "+1"
+        ),
+        React.createElement(
+            "button",
+            { onClick: minusOne },
+            "-1"
+        ),
+        React.createElement(
+            "button",
+            { onClick: reset },
+            "reset"
+        )
+    );
+
+    ReactDOM.render(templateTwo, appRoot);
+};
+
+renderCounterApp();
