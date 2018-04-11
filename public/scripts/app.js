@@ -2,9 +2,18 @@
 
 console.log('App.js is running');
 
+// if statements
+// ternary operators
+// logical and operator
+
+
+// only render the subtitle(and p tag) if subtitle exist - logical and operator
+// render new p tag - if options.length > 0 "Here are your options" "No options"
+
 var app = {
     title: "Indecision App",
-    subtitle: "Let me make a decision for you."
+    subtitle: "Let me make a decision for you.",
+    options: ['One', 'Two']
 };
 
 // JSX - Javascript XML
@@ -16,10 +25,15 @@ var template = React.createElement(
         null,
         app.title
     ),
-    React.createElement(
+    app.subtitle && React.createElement(
         "p",
         null,
         app.subtitle
+    ),
+    React.createElement(
+        "p",
+        null,
+        app.options && app.options.length > 0 ? 'Here are your options' : 'No options'
     ),
     React.createElement(
         "ol",
@@ -43,26 +57,32 @@ var user = {
     location: 'Florianópolis'
 };
 
+function getLocation(location) {
+    if (location) {
+        return React.createElement(
+            "p",
+            null,
+            "Location: ",
+            location
+        );
+    }
+}
+
 var templateTwo = React.createElement(
     "div",
     null,
     React.createElement(
         "h1",
         null,
-        user.name.toUpperCase() + '!'
+        user.name ? user.name : 'Anonymous'
     ),
-    React.createElement(
+    user.age && user.age >= 18 && React.createElement(
         "p",
         null,
         "Age: ",
         user.age
     ),
-    React.createElement(
-        "p",
-        null,
-        "Location: ",
-        user.location
-    )
+    getLocation(user.location)
 );
 
 var appRoot = document.getElementById('app');
