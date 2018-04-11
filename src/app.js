@@ -8,14 +8,14 @@ console.log('App.js is running');
 // only render the subtitle(and p tag) if subtitle exist - logical and operator
 // render new p tag - if options.length > 0 "Here are your options" "No options"
 
-let app = {
+const app = {
     title: "Indecision App",
     subtitle: "Let me make a decision for you.",
     options: ['One', 'Two']
 };
 
 // JSX - Javascript XML
-let template = (
+const template = (
     <div>
         <h1>{app.title}</h1>
         {app.subtitle && <p>{app.subtitle}</p>}
@@ -27,7 +27,7 @@ let template = (
     </div>
 );
 
-let user = {
+const user = {
     name: 'Thomas',
     age: 25,
     location: 'Florianópolis'
@@ -39,7 +39,7 @@ function getLocation(location) {
     }
 }
 
-let templateTwo = (
+const templateTwo = (
     <div>
         <h1>{(user.name) ? user.name : 'Anonymous'}</h1>
         {(user.age && user.age >= 18) && <p>Age: {user.age}</p>}
@@ -47,6 +47,6 @@ let templateTwo = (
     </div>
 );
 
-let appRoot = document.getElementById('app');
+const appRoot = document.getElementById('app');
 
 ReactDOM.render(template, appRoot);
