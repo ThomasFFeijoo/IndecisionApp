@@ -1,51 +1,105 @@
-'use strict';
+"use strict";
 
-// arguments object - no longer bound with arrow functions
+console.log('App.js is running');
 
-var add = function add(a, b) {
-    //console.log(arguments);
-    return a + b;
+// if statements
+// ternary operators
+// logical and operator
+
+
+// only render the subtitle(and p tag) if subtitle exist - logical and operator
+// render new p tag - if options.length > 0 "Here are your options" "No options"
+
+var app = {
+    title: "Indecision App",
+    subtitle: "Let me make a decision for you.",
+    options: ['One', 'Two']
 };
 
-console.log(add(1, 2, 1000));
+// JSX - Javascript XML
+var template = React.createElement(
+    "div",
+    null,
+    React.createElement(
+        "h1",
+        null,
+        app.title
+    ),
+    app.subtitle && React.createElement(
+        "p",
+        null,
+        app.subtitle
+    ),
+    React.createElement(
+        "p",
+        null,
+        app.options && app.options.length > 0 ? 'Here are your options' : 'No options'
+    ),
+    React.createElement(
+        "ol",
+        null,
+        React.createElement(
+            "li",
+            null,
+            "Item one"
+        ),
+        React.createElement(
+            "li",
+            null,
+            "Item two"
+        )
+    )
+);
 
-// this keyword - no longer bound
-
-var user = {
-    name: 'Thomas',
-    cities: ['Florianopolis', 'Santos', 'Barcelona'],
-    printPlaces: function printPlaces() {
-        var _this = this;
-
-        // map can transform the array
-        return this.cities.map(function (city) {
-            return _this.name + ' has lived in ' + city;
-        });
-
-        // arrow function can use 'this'
-        /*this.cities.forEach((city) => {
-            console.log(this.name + ' has lived in ' + city);
-        });*/
-    }
+var count = 0;
+// arrow function
+var addOne = function addOne() {
+    console.log('addOne');
 };
-
-console.log(user.printPlaces());
-
-// Challenge area
-
-var multiplier = {
-    // numbers - array of numbers
-    // multiplyBy - single number
-    // multiply - return new array have been multiplied
-    numbers: [1, 2, 3],
-    multiplyBy: 2,
-    multiply: function multiply() {
-        var _this2 = this;
-
-        return this.numbers.map(function (number) {
-            return number * _this2.multiplyBy;
-        });
-    }
+var minusOne = function minusOne() {
+    console.log('minusOne');
 };
+var reset = function reset() {
+    console.log('reset');
+};
+var templateTwo = React.createElement(
+    "div",
+    null,
+    React.createElement(
+        "h1",
+        null,
+        "Count: ",
+        count
+    ),
+    React.createElement(
+        "button",
+        { onClick: addOne },
+        "+1"
+    ),
+    React.createElement(
+        "button",
+        { onClick: minusOne },
+        "-1"
+    ),
+    React.createElement(
+        "button",
+        { onClick: reset },
+        "reset"
+    )
+);
 
-console.log(multiplier.multiply());
+/*
+can be done this way
+<button onClick={() => {
+    console.log('addOne');
+}}>+1</button>
+*/
+
+// Challenge
+// Make button "-1" - setup minusOne function and register - log "minusOne"
+// Make reset button "reset" - setup reset function - log "reset"
+
+
+var appRoot = document.getElementById('app');
+
+ReactDOM.render(templateTwo, appRoot);
