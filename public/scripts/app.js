@@ -1,34 +1,51 @@
 'use strict';
 
-/*
-function square(x) {
-    return x * x;
-}
+// arguments object - no longer bound with arrow functions
 
-// arrow functions, always anonymous
-/!*const squareArrow = (x) => {
-    return x * x;
-};*!/
-
-// identical to the comment above
-const squareArrow = (x) => x * x;
-
-console.log(square(8));
-console.log(squareArrow(9));*/
-
-// Challenge - Use arrow functions
-// getFirstName('Thomas Feijoo') -> 'Thomas'
-// create regular arrow function
-// create arrow function using shorthand syntax
-
-var fullName = 'Thomas Feijoo';
-var getFirstName = function getFirstName(name) {
-    return name.split(' ')[0];
+var add = function add(a, b) {
+    //console.log(arguments);
+    return a + b;
 };
 
-var getFirstNameShorthand = function getFirstNameShorthand(name) {
-    return name.split(' ')[0];
+console.log(add(1, 2, 1000));
+
+// this keyword - no longer bound
+
+var user = {
+    name: 'Thomas',
+    cities: ['Florianopolis', 'Santos', 'Barcelona'],
+    printPlaces: function printPlaces() {
+        var _this = this;
+
+        // map can transform the array
+        return this.cities.map(function (city) {
+            return _this.name + ' has lived in ' + city;
+        });
+
+        // arrow function can use 'this'
+        /*this.cities.forEach((city) => {
+            console.log(this.name + ' has lived in ' + city);
+        });*/
+    }
 };
 
-console.log(getFirstName(fullName));
-console.log(getFirstNameShorthand(fullName));
+console.log(user.printPlaces());
+
+// Challenge area
+
+var multiplier = {
+    // numbers - array of numbers
+    // multiplyBy - single number
+    // multiply - return new array have been multiplied
+    numbers: [1, 2, 3],
+    multiplyBy: 2,
+    multiply: function multiply() {
+        var _this2 = this;
+
+        return this.numbers.map(function (number) {
+            return number * _this2.multiplyBy;
+        });
+    }
+};
+
+console.log(multiplier.multiply());
