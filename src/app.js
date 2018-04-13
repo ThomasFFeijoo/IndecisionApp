@@ -1,10 +1,13 @@
 class IndecisionApp extends React.Component {
     render() {
+        const title = 'Indecision';
+        const subtitle = 'Put your life in the hands of a computer';
+        const options = ['Thing 1', 'Thing 2', 'Thing 4'];
         return (
           <div>
-              <Header/>
+              <Header title={title} subtitle={subtitle}/>
               <Action/>
-              <Options/>
+              <Options options={options}/>
               <AddOption/>
 
           </div>
@@ -16,8 +19,8 @@ class Header extends React.Component {
     render() {
         return (
           <div>
-              <h1>Indecision</h1>
-              <h2>Put your life in the hands of a computer</h2>
+              <h1>{this.props.title}</h1>
+              <h2>{this.props.subtitle}</h2>
           </div>
         );
     }
@@ -33,10 +36,14 @@ class Action extends React.Component {
     }
 }
 
+// Setup options prop for options component
+// Render the length of the array
+
 class Options extends React.Component {
     render() {
         return (
             <div>
+                {this.props.options.map((option) => <Option key={option} optionText={option}/>)}
                 <Option/>
             </div>
         );
@@ -49,7 +56,7 @@ class Option extends React.Component {
     render() {
         return (
             <div>
-                Option Component
+                {this.props.optionText}
             </div>
         );
     }
