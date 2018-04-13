@@ -41,8 +41,15 @@ class Action extends React.Component {
 }
 
 class Options extends React.Component {
+    constructor(props) {
+        super(props);
+        // better performance than bind onClick
+        this.handleRemoveAll = this.handleRemoveAll.bind(this);
+    }
+
     handleRemoveAll() {
-        alert('removed');
+        console.log(this.props.options);
+        //alert('removed');
     }
 
     render() {
