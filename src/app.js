@@ -59,7 +59,16 @@ class IndecisionApp extends React.Component {
     }
 }
 
-class Header extends React.Component {
+const Header = (props) => {
+    return (
+        <div>
+            <h1>{props.title}</h1>
+            <h2>{props.subtitle}</h2>
+        </div>
+    );
+};
+
+/*class Header extends React.Component {
     render() {
         return (
           <div>
@@ -68,9 +77,22 @@ class Header extends React.Component {
           </div>
         );
     }
-}
+}*/
 
-class Action extends React.Component {
+const Action = (props) => {
+    return (
+        <div>
+            <button
+                onClick={props.handlePick}
+                disabled={!props.hasOptions}
+            >
+                What should I do?
+            </button>
+        </div>
+    );
+};
+
+/*class Action extends React.Component {
     render() {
         return (
             <div>
@@ -83,9 +105,21 @@ class Action extends React.Component {
             </div>
         );
     }
-}
+}*/
 
-class Options extends React.Component {
+const Options = (props) => {
+  return (
+      <div>
+          <button onClick={props.handleDeleteOptions}>Remove all</button>
+          {
+              props.options.map((option) => <Option key={option} optionText={option}/>)
+          }
+          <Option/>
+      </div>
+  );
+};
+
+/*class Options extends React.Component {
     render() {
         return (
             <div>
@@ -97,9 +131,17 @@ class Options extends React.Component {
             </div>
         );
     }
-}
+}*/
 
-class Option extends React.Component {
+const Option = (props) => {
+    return (
+        <div>
+            {props.optionText}
+        </div>
+    );
+};
+
+/*class Option extends React.Component {
     render() {
         return (
             <div>
@@ -107,7 +149,7 @@ class Option extends React.Component {
             </div>
         );
     }
-}
+}*/
 
 class AddOption extends React.Component {
     constructor(props) {
@@ -140,4 +182,13 @@ class AddOption extends React.Component {
     }
 }
 
-ReactDOM.render(<IndecisionApp/>, document.getElementById('app'));
+/*const User = (props) => {
+    return (
+        <div>
+            <p>Name: {props.name}</p>
+            <p>Age: {props.age}</p>
+        </div>
+    );
+};*/
+
+ReactDOM.render(<IndecisionApp />, document.getElementById('app'));
