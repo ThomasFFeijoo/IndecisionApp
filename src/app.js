@@ -1,16 +1,13 @@
-// import './utils.js';
+// install -> import -> use
 
-// defaults can be named anything, but it's nice to make sense
-/*import subtract, { square, add } from "./utils";
+/*
+import validator from 'validator';
 
-console.log('app.js is running');
-console.log(square(4));
-console.log(add(2,3));
-console.log(subtract(2,3));*/
+console.log(validator.isEmail('test@hehe.com'));*/
 
+import React from 'react';
+import ReactDOM from 'react-dom';
 
-import isSenior, { isAdult, canDrink} from "./person";
+const template = React.createElement('p', {}, 'testing');
 
-console.log(isAdult(18));
-console.log(canDrink(22));
-console.log(isSenior(59));
+ReactDOM.render(template, document.getElementById('app'));
